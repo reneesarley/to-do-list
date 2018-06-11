@@ -1,0 +1,8 @@
+.hidden {
+  display: none;
+}
+
+.clickable{
+  color: blue;
+  text-decoration: underline;
+}
