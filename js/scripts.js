@@ -7,16 +7,6 @@ function Task(task, duedate, urgency, category, notes) {
   this.notesInfo = notes;
 }
 
-  function showTaskDetail() {
-    alert("showTaskDetail is being called")
-    // $("#task-detail").show();
-    // $("#task-detail h2").text(newTask.taskName);
-    // $(".detail-duedate").text(newTask.dueDate);
-    // $(".detail-urgency").text(newTask.urgencyLevel);
-    // $(".detail-category").text(newTask.categoryType);
-    // $(".detail-notes").text(newTask.notesInfo);
-    }
-
 // user interface logic
 $(document).ready(function() {
   $("form#todo-form").submit(function() {
@@ -46,16 +36,12 @@ $(document).ready(function() {
       $("form#complete").append("<div class='form-check' id='" + taskId + "' >" + "<input id='" + taskId + "toRemove' class='form-check-input' type='checkbox' value='' id='defaultCheck1' checked>" + "<label class='form-check-label' for='defaultCheck1'>" + newTask.taskName + "</label>" + "</div>");
 
       $("#complete input").last().click(function(){
-        $("#" + taskId).remove();
+        $(this).parent().closest("div").remove();
+        // $("#" + taskId).remove();
         $("form#unfinished").append("<div class='form-check' id='" + taskId + "'>" + "<input id='" + taskId + "toRemove' class='form-check-input' type='checkbox' value='' id='defaultCheck1'>" + "<label class='form-check-label clickable' for='defaultCheck1'>" + newTask.taskName + "</label>" + "</div>");
 
-        $("#" + taskId + "toRemove").click(function() {
-          $("#" + taskId).remove();
-          $("form#complete").append("<div class='form-check' id='" + taskId + "' >" + "<input id='" + taskId + "toRemove' class='form-check-input' type='checkbox' value='' id='defaultCheck1' checked>" + "<label class='form-check-label' for='defaultCheck1'>" + newTask.taskName + "</label>" + "</div>");
-        })
-        // document.getElementByClassName("form-check-input").addEventListener("click", showTaskDetail);
-
       });
+
     });
 
   console.log("end of function");
